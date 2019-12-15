@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="yikondiAppliApp.medicalPrescription.home.title">Medical Prescriptions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-medical-prescription" [routerLink]="['/medical-prescription/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="yikondiAppliApp.medicalPrescription.home.createLabel">
+            Create a new Medical Prescription
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="medicalPrescriptions?.length === 0">
+        <span jhiTranslate="yikondiAppliApp.medicalPrescription.home.notFound">No medicalPrescriptions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="medicalPrescriptions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.medicalPrescription.prescriptionDateTime">Prescription Date Time</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.medicalPrescription.observations">Observations</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.medicalPrescription.doctor">Doctor</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.medicalPrescription.patient">Patient</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.medicalPrescription.appointement">Appointement</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let medicalPrescription of medicalPrescriptions ;trackBy: trackId">
+                <td><a [routerLink]="['/medical-prescription', medicalPrescription.id, 'view' ]">{{medicalPrescription.id}}</a></td>
+                <td>{{medicalPrescription.prescriptionDateTime | date:'medium'}}</td>
+                <td>{{medicalPrescription.observations}}</td>
+                <td>
+                    <div *ngIf="medicalPrescription.doctor">
+                        <a [routerLink]="['/doctor', medicalPrescription.doctor?.id, 'view' ]" >{{medicalPrescription.doctor?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="medicalPrescription.patient">
+                        <a [routerLink]="['/patient', medicalPrescription.patient?.id, 'view' ]" >{{medicalPrescription.patient?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="medicalPrescription.appointement">
+                        <a [routerLink]="['/patient-appointement', medicalPrescription.appointement?.id, 'view' ]" >{{medicalPrescription.appointement?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/medical-prescription', medicalPrescription.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/medical-prescription', medicalPrescription.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(medicalPrescription)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

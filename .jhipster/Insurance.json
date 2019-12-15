@@ -1,0 +1,33 @@
+{
+    "name": "Insurance",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "insuranceType",
+            "otherEntityRelationshipName": "insurance",
+            "relationshipName": "insuranceType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191215221441",
+    "entityTableName": "insurance",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

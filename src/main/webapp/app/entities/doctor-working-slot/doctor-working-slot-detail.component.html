@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="doctorWorkingSlot">
+            <h2><span jhiTranslate="yikondiAppliApp.doctorWorkingSlot.detail.title">Doctor Working Slot</span> {{doctorWorkingSlot.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="yikondiAppliApp.doctorWorkingSlot.dayOfTheWeek">Day Of The Week</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'yikondiAppliApp.DayOfTheWeek.' + doctorWorkingSlot.dayOfTheWeek}}">{{doctorWorkingSlot.dayOfTheWeek}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.doctorWorkingSlot.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{doctorWorkingSlot.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.doctorWorkingSlot.endTime">End Time</span></dt>
+                <dd>
+                    <span>{{doctorWorkingSlot.endTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.doctorWorkingSlot.description">Description</span></dt>
+                <dd>
+                    <span>{{doctorWorkingSlot.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.doctorWorkingSlot.doctorSchedule">Doctor Schedule</span></dt>
+                <dd>
+                    <div *ngIf="doctorWorkingSlot.doctorSchedule">
+                        <a [routerLink]="['/doctor-schedule', doctorWorkingSlot.doctorSchedule?.id, 'view']">{{doctorWorkingSlot.doctorSchedule?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/doctor-working-slot', doctorWorkingSlot.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

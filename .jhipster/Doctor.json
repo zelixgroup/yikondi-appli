@@ -1,0 +1,37 @@
+{
+    "name": "Doctor",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "Title",
+            "fieldValues": "DOCTOR,PROFESSOR"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "patient",
+            "otherEntityRelationshipName": "doctor",
+            "relationshipName": "patient",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "speciality",
+            "otherEntityRelationshipName": "doctor",
+            "relationshipName": "speciality",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191215221429",
+    "entityTableName": "doctor",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

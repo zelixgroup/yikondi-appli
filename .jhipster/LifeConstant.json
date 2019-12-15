@@ -1,0 +1,28 @@
+{
+    "name": "LifeConstant",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "lifeConstantUnit",
+            "otherEntityRelationshipName": "lifeConstant",
+            "relationshipName": "lifeConstantUnit",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191215221438",
+    "entityTableName": "life_constant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
