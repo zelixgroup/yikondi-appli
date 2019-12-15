@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="yikondiAppliApp.drug.home.title">Drugs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-drug" [routerLink]="['/drug/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="yikondiAppliApp.drug.home.createLabel">
+            Create a new Drug
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="drugs?.length === 0">
+        <span jhiTranslate="yikondiAppliApp.drug.home.notFound">No drugs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="drugs?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.drug.name">Name</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.drug.description">Description</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.drug.administrationRoute">Administration Route</span></th>
+            <th scope="col" ><span jhiTranslate="yikondiAppliApp.drug.dosageForm">Dosage Form</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let drug of drugs ;trackBy: trackId">
+                <td><a [routerLink]="['/drug', drug.id, 'view' ]">{{drug.id}}</a></td>
+                <td>{{drug.name}}</td>
+                <td>{{drug.description}}</td>
+                <td>
+                    <div *ngIf="drug.administrationRoute">
+                        <a [routerLink]="['/drug-administration-route', drug.administrationRoute?.id, 'view' ]" >{{drug.administrationRoute?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="drug.dosageForm">
+                        <a [routerLink]="['/drug-dosage-form', drug.dosageForm?.id, 'view' ]" >{{drug.dosageForm?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/drug', drug.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/drug', drug.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(drug)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

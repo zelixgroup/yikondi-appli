@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="address">
+            <h2><span jhiTranslate="yikondiAppliApp.address.detail.title">Address</span> {{address.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="yikondiAppliApp.address.location">Location</span></dt>
+                <dd>
+                    <span>{{address.location}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.address.geolocation">Geolocation</span></dt>
+                <dd>
+                    <span>{{address.geolocation}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.address.primaryPhoneNumber">Primary Phone Number</span></dt>
+                <dd>
+                    <span>{{address.primaryPhoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.address.secondaryPhoneNumber">Secondary Phone Number</span></dt>
+                <dd>
+                    <span>{{address.secondaryPhoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.address.emailAddress">Email Address</span></dt>
+                <dd>
+                    <span>{{address.emailAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.address.city">City</span></dt>
+                <dd>
+                    <div *ngIf="address.city">
+                        <a [routerLink]="['/city', address.city?.id, 'view']">{{address.city?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="yikondiAppliApp.address.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="address.country">
+                        <a [routerLink]="['/country', address.country?.id, 'view']">{{address.country?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/address', address.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+id;prescription_date_time;observations
+1;2019-12-15T13:37:06;../fake-data/blob/hipster.txt
+2;2019-12-15T06:20:13;../fake-data/blob/hipster.txt
+3;2019-12-15T08:00:33;../fake-data/blob/hipster.txt
+4;2019-12-15T19:57:13;../fake-data/blob/hipster.txt
+5;2019-12-15T18:18:55;../fake-data/blob/hipster.txt
+6;2019-12-15T06:35:20;../fake-data/blob/hipster.txt
+7;2019-12-15T12:51:14;../fake-data/blob/hipster.txt
+8;2019-12-15T14:44:54;../fake-data/blob/hipster.txt
+9;2019-12-14T22:58:27;../fake-data/blob/hipster.txt
+10;2019-12-15T12:39:46;../fake-data/blob/hipster.txt
